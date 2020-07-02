@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="options.css" />
+    </head>
+    <body>
+        <h1>Options:</h1>
+
+        <div class="options">
+            <div><label for="endpoint" style="width:35em">Your ymarks endpoint</label></div>
+            <div><input type="text" id="endpoint" /></div>
+            <div><label for="pin" style="width:35em">Your ymarks PIN</label></div>
+            <div><input type="text" id="pin" /></div>
+            <div><label for="auto_ul" style="width:35em">Trigger upload on local changes</label></div>
+            <div><input type="checkbox" id="auto_ul" /></div>
+            <div><label for="auto_dl" style="width:35em">Replace local bookmarks on startup</label></div>
+            <div><input type="checkbox" id="auto_dl" /></div>
+        </div>
+
+        <button id="saveOptions">Save</button>
+
+        <script src="options.js"></script>
+    </body>
+</html>

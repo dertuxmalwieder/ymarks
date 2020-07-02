@@ -1,0 +1,80 @@
+/**
+ * Copyright 2017 Google Inc. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+const helper = require('./helper');
+const Page = require('./Page');
+
+class Browser {
+  /**
+   * @param {!Connection} connection
+   * @param {boolean} ignoreHTTPSErrors
+   * @param {function()=} closeCallback
+   */
+  constructor(connection, ignoreHTTPSErrors, closeCallback) {
+    this._ignoreHTTPSErrors = ignoreHTTPSErrors;
+    this._screenshotTaskQueue = new TaskQueue();
+    this._connection = connection;
+    this._closeCallback = closeCallback || new Function();
+  }
+
+  /**
+   * @return {string}
+   */
+  wsEndpoint() {
+    return this._connection.url();
+  }
+
+  /**
+   * @return {!Promise<!Page>}
+   */
+  async newPage() {
+    const {targetId} = await this._connection.send('Target.createTarget', {url: 'about:blank'});
+    const client = await this._connection.createSession(targetId);
+    return await Page.create(client, this._ignoreHTTPSErrors, this._screenshotTaskQueue);
+  }
+
+  /**
+   * @return {!Promise<string>}
+   */
+  async version() {
+    const version = await this._connection.send('Browser.getVersion');
+    return version.product;
+  }
+
+  close() {
+    this._connection.dispose();
+    this._closeCallback.call(null);
+  }
+}
+
+module.exports = Browser;
+helper.tracePublicAPI(Browser);
+
+class TaskQueue {
+  constructor() {
+    this._chain = Promise.resolve();
+  }
+
+  /**
+   * @param {function()} task
+   * @return {!Promise}
+   */
+  postTask(task) {
+    const result = this._chain.then(task);
+    this._chain = result.catch(() => {});
+    return result;
+  }
+}

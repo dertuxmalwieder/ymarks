@@ -1,0 +1,28 @@
+html {
+    font: message-box;
+    color: #333;
+}
+
+body {
+    font-size: 1.25rem;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: normal;
+    margin: 0;
+    padding-bottom: 4px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid hsla(0, 0%, 0%, 0.2);
+}
+
+.options {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 260px auto;
+    margin-bottom : 10px;
+}
+
+#saveOptions {
+    display:inline;
+}

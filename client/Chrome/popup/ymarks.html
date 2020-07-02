@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <style type="text/css">
+         body {
+             padding: 0.4em 1em;
+             width:250px;
+         }
+
+         .head {
+             font-size:larger;
+             font-weight:bold;
+             display:block;
+             margin-bottom:5px;
+         }
+
+         button {
+             text-align:center;
+         }
+
+         .legend {
+             display: block;
+             margin-top:1em;
+             font-size:0.9em;
+         }
+
+         .warning {
+             color: red;
+         }
+        </style>
+    </head>
+    <body>
+        <div class="head">ymarks bookmarks sync</div>
+
+        <button id="ymarks-syncul">upload bookmarks</button><br />
+        <button id="ymarks-syncdl">download bookmarks</button><br />
+        <button id="ymarks-restore">restore prev. bookmarks</button><br />
+        <button id="ymarks-quit">quit the ymarks server</button>
+
+        <div class="legend"><span class="warning">Warning:</span> both download and restore will replace your current local bookmarks. Make sure you have a backup stored on your ymarks server.</div>
+        <script type="text/javascript" src="../scripts/browser-polyfill.js"></script>
+        <script type="text/javascript" src="ymarks.js"></script>
+    </body>
+</html>
