@@ -1,0 +1,13 @@
+[requires]
+sqlite3/3.33.0
+
+[build_requires]
+cjson/1.7.14
+
+[generators]
+cmake_find_package
+cmake_paths
+
+[options]
+sqlite3:shared=True
+cjson:shared=True
