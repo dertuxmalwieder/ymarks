@@ -1,9 +1,18 @@
 /**
  * ymarks :: a self-hosted single-user Xmarks alternative.
  *
- * This work is free. You can redistribute it and/or modify it under the
- * terms of the Do What The Fuck You Want To Public License, Version 2,
- * as published by Sam Hocevar. See the COPYING file for more details.
+ * The contents of this file are subject to the terms of the
+ * Common Development and Distribution License, Version 1.0 only
+ * (the "License").  You may not use this file except in compliance
+ * with the License.
+ *
+ * See the file COPYING in this distribution for details.
+ * A copy of the CDDL is also available via the Internet at
+ * http://www.opensource.org/licenses/cddl1.txt
+ *
+ * When distributing Covered Code, include this CDDL HEADER in each
+ * file and include the contents of the COPYING file from this
+ * distribution.
  */
 
 
@@ -15,7 +24,8 @@
 #include <signal.h>
 #include <string.h>
 #include <limits.h>
-#include <sqlite3.h>
+#include "sqlite3.h"
+#include "cjson/cJSON.h"
 
 /* Fuck NIH */
 #define WBY_STATIC
@@ -23,7 +33,6 @@
 #define WBY_USE_FIXED_TYPES
 #define WBY_USE_ASSERT
 #include "3rdparty/web.h"
-#include "3rdparty/cJSON.h"
 
 #include "constants.h"
 #include "download.h"

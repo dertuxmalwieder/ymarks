@@ -13,13 +13,10 @@ A self-hosted solution to keep your browser's bookmarks synchronized without lim
 
 ### Server
 
-You'll need a decent C compiler and the `sqlite3` libraries.
+You'll need a decent C compiler, CMake and Conan in your `$PATH` - the latter will take care of your dependencies. Then:
 
-    cc -I . -I /usr/local/include -o ymarks 3rdparty/cJSON.c src/backup.c src/main.c -lsqlite3
-
-Your exact compiler command could vary, depending on your library and include paths.
-
-See the `build.cmd` file for a clue about how to compile with Clang on Windows.
+    % mkdir build ; cd build
+    % cmake ..
 
 #### Preprocessor definitions
 
@@ -49,4 +46,4 @@ Right now, we support Firefox and Chrome (less so, Vivaldi). Grab the extension 
 
 ## Licenses
 
-The server part of `ymarks` comes with a number of third-party libraries (see `/server/3rdparty`), licensed under the terms of the BSD resp. MIT licenses. Everything else in this repository is original work, licensed under the terms of the *WTFPL* license. Please refer to the `server/COPYING` file for details. Feel free to do whatever you want with it.
+The server part of `ymarks` uses a number of third-party libraries, licensed under the terms of the BSD resp. MIT licenses. Everything else in this repository is original work, licensed under the terms of the *CDDL* license. Please refer to the `COPYING` file for details.
