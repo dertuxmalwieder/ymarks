@@ -22,7 +22,3 @@ You'll need to set your server (by default, `http://localhost:8888`) and PIN (by
 ## TODO
 
 * Support synchronization of bookmark tags. There does not seem to be a WebExtensions API for that yet.
-
-## Licenses
-
-Unless noted otherwise (usually directly in the source code), everything in this repository is original work, licensed under the terms of the *WTFPL* license. Feel free to do whatever you want with it.
