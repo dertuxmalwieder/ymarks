@@ -108,7 +108,6 @@ int main(void) {
     }
 
     /* Set up the web server: */
-    void *memory = NULL;
     wby_size needed_memory = 0;
 
     /* Provide the relevant handlers and variables: */
@@ -259,7 +258,6 @@ static int dispatch(struct wby_con *connection, void *userdata) {
         cJSON* uploaded = cJSON_Parse(buffer);
         struct server_reply pin = pincheck(uploaded);
         if (!pin.success) {
-            cJSON* root = cJSON_CreateObject();
             cJSON_AddFalseToObject(root, "success");
             cJSON_AddStringToObject(root, "message", pin.msg);
             const char* returnvalue = cJSON_Print(root);
