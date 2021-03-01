@@ -125,8 +125,11 @@ cJSON* download_backup(void) {
 #ifndef SILENT
             printf("Could not rename the database. :-(\n");
 #endif
+            fclose(backupfile);
             return NULL;
         }
+
+        fclose(backupfile);
     }
 
     FILE* oldbackupfile = fopen(backupname2, "w");
@@ -139,6 +142,8 @@ cJSON* download_backup(void) {
 #endif
             /* We don't need to fail here though. */
         }
+
+        fclose(oldbackupfile);
     }
 
     return download_bookmarks();
