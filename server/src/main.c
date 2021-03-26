@@ -167,7 +167,7 @@ static int dispatch(struct wby_con *connection, void *userdata) {
     printf("Request --> %s:\n", connection->request.uri);
     printf("   Method: %s\n", connection->request.method);
     printf("   Params: %s\n", connection->request.query_params);
-    printf("   ConLen: %d\n", len);
+    printf("   ConLen: %zd\n", len);
 #endif
 
     if (len > 0) {
@@ -395,7 +395,9 @@ struct server_reply pincheck(cJSON* uploaded) {
     }
 
     ret.success = success;
-    ret.msg = msg;
-
+    if (success == 0) {
+        ret.msg[0] = '\0';
+        strncat(ret.msg, msg, strlen(msg));
+    }
     return ret;
 }

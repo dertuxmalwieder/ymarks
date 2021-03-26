@@ -165,7 +165,10 @@ static inline struct server_reply upload_bookmarks(cJSON* bookmarks) {
 
     struct server_reply ret;
     ret.success = success;
-    ret.msg = msg;
+    if (success == 0) {
+        ret.msg[0] = '\0';
+        strncat(ret.msg, msg, strlen(msg));
+    }
     return ret;
 }
 

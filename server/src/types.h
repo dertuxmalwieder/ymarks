@@ -22,7 +22,7 @@
 /* Return value for JSON: */
 struct server_reply {
     int success;
-    char* msg;
+    char msg[100];
 } reply;
 
 
