@@ -1,7 +1,7 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "ymarks",
-    "version": "1.1.0.4",
+    "version": "1.2.0.0",
     "description": "The official ymarks browser extension.",
     "icons": {
         "32": "icons/ymarks-32.png"
@@ -9,16 +9,15 @@
     "permissions": [
         "bookmarks",
         "storage",
-        "notifications",
+        "notifications"
+    ],
+    "host_permissions": [
         "<all_urls>"
     ],
     "background": {
-        "scripts": [
-            "scripts/browser-polyfill.js",
-            "scripts/background.js"
-        ]
+        "service_worker": "scripts/background.js"
     },
-    "browser_action": {
+    "action": {
         "default_icon": "icons/ymarks-32.png",
         "default_title": "ymarks",
         "default_popup": "popup/ymarks.html"
