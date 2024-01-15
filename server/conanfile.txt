@@ -1,8 +1,8 @@
 [requires]
-sqlite3/3.38.1
+sqlite3/3.44.2
 
 [build_requires]
-cjson/1.7.15
+cjson/1.7.17
 
 [generators]
 cmake_find_package
